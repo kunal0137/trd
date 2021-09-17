@@ -64,7 +64,11 @@ spec:
             value: "true"
           - name: REMOTE_THEMES
             value: "true"
-
+          - name: RCLONE_S3_NO_CHECK_BUCKET
+            value: "true"
+          - name: RCLONE_S3_SERVER_SIDE_ENCRYPTION
+            value: "aws:kms"
+            
           {{- if .Values.semoss.environmentVariables.FILE_UPLOAD_LIMIT  }}
           - name: FILE_UPLOAD_LIMIT
             value: {{quote .Values.semoss.environmentVariables.FILE_UPLOAD_LIMIT }}
@@ -211,6 +215,49 @@ spec:
           {{- if .Values.semoss.social.ms_redirect_uri  }}
           - name: MS_REDIRECT
             value: {{quote .Values.semoss.social.ms_redirect_uri }}
+          {{- end }}
+
+
+          {{- if .Values.semoss.social.adfs_client_id  }}
+          - name: ADFS_CLIENT_ID
+            value: {{quote .Values.semoss.social.adfs_client_id }}
+          {{- end }}
+
+          {{- if .Values.semoss.social.adfs_secret_key  }}
+          - name: ADFS_SECRET_KEY
+            value: {{quote .Values.semoss.social.adfs_secret_key }}
+          {{- end }}
+
+          {{- if .Values.semoss.social.adfs_redirect_uri  }}
+          - name: ADFS_REDIRECT
+            value: {{quote .Values.semoss.social.adfs_redirect_uri }}
+          {{- end }}
+
+
+          {{- if .Values.semoss.social.adfs_auth_url  }}
+          - name: ADFS_AUTH_URL
+            value: {{quote .Values.semoss.social.adfs_auth_url }}
+          {{- end }}
+
+
+          {{- if .Values.semoss.social.adfs_token_url  }}
+          - name: ADFS_TOKEN_URL
+            value: {{quote .Values.semoss.social.adfs_token_url }}
+          {{- end }}
+
+          {{- if .Values.semoss.social.adfs_scope }}
+          - name: ADFS_SCOPE
+            value: {{quote .Values.semoss.social.adfs_scope }}
+          {{- end }}
+
+          {{- if .Values.semoss.social.adfs_bean  }}
+          - name: ADFS_BEAN
+            value: {{quote .Values.semoss.social.adfs_bean }}
+          {{- end }}
+
+          {{- if .Values.semoss.social.adfs_json  }}
+          - name: ADFS_JSON
+            value: {{quote .Values.semoss.social.adfs_json }}
           {{- end }}
 
           {{- if .Values.semoss.r.r_on  }}
