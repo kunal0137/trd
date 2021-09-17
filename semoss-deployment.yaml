@@ -68,7 +68,7 @@ spec:
             value: "true"
           - name: RCLONE_S3_SERVER_SIDE_ENCRYPTION
             value: "aws:kms"
-            
+
           {{- if .Values.semoss.environmentVariables.FILE_UPLOAD_LIMIT  }}
           - name: FILE_UPLOAD_LIMIT
             value: {{quote .Values.semoss.environmentVariables.FILE_UPLOAD_LIMIT }}
@@ -217,6 +217,11 @@ spec:
             value: {{quote .Values.semoss.social.ms_redirect_uri }}
           {{- end }}
 
+
+          {{- if .Values.semoss.social.enable_adfs_login  }}
+          - name: ENABLE_ADFS
+            value: {{quote .Values.semoss.social.enable_adfs_login }}
+          {{- end }}
 
           {{- if .Values.semoss.social.adfs_client_id  }}
           - name: ADFS_CLIENT_ID
